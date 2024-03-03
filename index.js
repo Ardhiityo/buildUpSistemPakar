@@ -45,8 +45,8 @@ const data = [{
     },
     {
         name: 'Tidak Ada Kecocokan Penyakit/Hama',
-        gejala : ['Tidak ditemukan gejala yang spesisfik dengan penyakit yang terdeteksi'],
-        solusi : 'Silahkan datangi dokter tanaman terdekat',
+        gejala: ['Tidak ditemukan gejala yang spesisfik dengan penyakit yang terdeteksi'],
+        solusi: 'Silahkan datangi dokter tanaman terdekat',
         point: []
     }
 ]
@@ -125,7 +125,7 @@ function p5() {
 
 const hasil = () => {
     let refilters = (samples) => {
-        console.log('after refilters');
+        ;
         const results = [];
         samples.filter((items) => {
             if (items.point.length === items.maxPoints) {
@@ -331,16 +331,15 @@ app.post('/g16', (req, res) => {
     if (validator === 'y') {
         addPoint('Ulat Tentara');
     }
+    res.redirect('/result');
+})
+
+app.get('/result', (req, res) => {
     console.log(data);
-    // const results = hasil();
-    // res.render('diagnosa/index', {
-    //     results
-    // });
-    console.log(hasil());
-    res.send('Joss');
-    data.map((item) => {
-        item.point = 0;
-    })
+    const results = hasil();
+    res.render('diagnosa/index', {
+        results
+    });
 })
 
 

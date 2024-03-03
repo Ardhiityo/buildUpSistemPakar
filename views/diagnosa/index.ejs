@@ -7,9 +7,17 @@
   </head>
   <body>
     <h1>Hasil Diagnosa</h1>
-    <h3>Nama Penyakit/Hama :</h3>
+
+    <h2>Positif <%= results.length %> Penyakit/Hama</h2>
     <ul>
-      <li><%= results.name %></li>
+      <% for( const result of results ) { %>
+      <h3>Nama Penyakit/Hama:</h3>
+      <li><%= result.name %></li>
+      <h3>Gejala</h3>
+      <li><%= result.gejala %></li>
+      <h3>Solusi</h3>
+      <li><%= result.solusi %></li>
+      <% } %>
     </ul>
   </body>
 </html>
